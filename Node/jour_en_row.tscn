@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://3brj710nljde"]
+
+[ext_resource type="Script" path="res://Scripts/JourEnRow.gd" id="1_hqlg3"]
+
+[node name="JourEnRow" type="Node2D"]
+script = ExtResource("1_hqlg3")
+
+[node name="Box" type="BoxContainer" parent="."]
+custom_minimum_size = Vector2(580, 33)
+layout_direction = 2
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_right = 580.0
+offset_bottom = 33.0
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="Container" type="MarginContainer" parent="Box"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+
+[node name="Grid" type="GridContainer" parent="Box/Container"]
+layout_mode = 2
+columns = 7

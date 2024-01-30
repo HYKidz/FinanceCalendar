@@ -1,12 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://lofglxy8wh6u"]
 
-[ext_resource type="PackedScene" uid="uid://bjluuqlfgte5e" path="res://Node/jour.tscn" id="1_e4els"]
-[ext_resource type="PackedScene" uid="uid://bi74h3c5a7wjk" path="res://Node/date.tscn" id="2_a8s41"]
+[ext_resource type="Script" path="res://Scripts/calendar.gd" id="1_vwx50"]
+[ext_resource type="PackedScene" uid="uid://3brj710nljde" path="res://Node/jour_en_row.tscn" id="2_hiuxa"]
 
 [node name="Calendar" type="Node2D"]
+script = ExtResource("1_vwx50")
 
-[node name="Node2D" parent="." instance=ExtResource("1_e4els")]
-position = Vector2(66, 23)
-
-[node name="Date" parent="." instance=ExtResource("2_a8s41")]
-position = Vector2(66, 75)
+[node name="JourEnRow" parent="." instance=ExtResource("2_hiuxa")]
+position = Vector2(150, 150)

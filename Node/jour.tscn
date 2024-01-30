@@ -1,6 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bjluuqlfgte5e"]
+[gd_scene load_steps=6 format=3 uid="uid://bjluuqlfgte5e"]
 
 [ext_resource type="Script" path="res://Scripts/jour.gd" id="1_vfyd7"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_esocm"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_023cw"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wyulr"]
 
@@ -9,20 +13,38 @@
 [node name="JourDeLaSemaine" type="Node2D"]
 script = ExtResource("1_vfyd7")
 
-[node name="Jour" type="Label" parent="."]
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Contour" type="Sprite2D" parent="Control"]
+modulate = Color(0, 0, 0, 1)
+material = SubResource("CanvasItemMaterial_esocm")
+scale = Vector2(83, 33)
+texture = SubResource("CanvasTexture_023cw")
+
+[node name="Fond" type="Sprite2D" parent="Control"]
+material = SubResource("CanvasItemMaterial_wyulr")
+scale = Vector2(80, 30)
+texture = SubResource("CanvasTexture_t73uy")
+
+[node name="Jour" type="Label" parent="Control"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -35.0
-offset_top = -12.5
-offset_right = 35.0
-offset_bottom = 12.5
+offset_left = -55.0
+offset_top = -32.5
+offset_right = 15.0
+offset_bottom = -7.5
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Fond" type="Sprite2D" parent="."]
-material = SubResource("CanvasItemMaterial_wyulr")
-scale = Vector2(80, 30)
-texture = SubResource("CanvasTexture_t73uy")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 11
+text = "Que veux tu"
+horizontal_alignment = 1
+vertical_alignment = 1
