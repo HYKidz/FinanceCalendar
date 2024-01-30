@@ -1,48 +1,41 @@
-[gd_scene load_steps=6 format=3 uid="uid://bjluuqlfgte5e"]
+[gd_scene load_steps=6 format=3 uid="uid://cvpe5k0vc734t"]
 
-[ext_resource type="Script" path="res://Scripts/jour.gd" id="1_vfyd7"]
+[ext_resource type="Script" path="res://Scripts/jour.gd" id="1_em1er"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_esocm"]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7v1kq"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_023cw"]
+[sub_resource type="CanvasTexture" id="CanvasTexture_midt0"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wyulr"]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_c0a5o"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_t73uy"]
+[sub_resource type="CanvasTexture" id="CanvasTexture_xrhyp"]
 
-[node name="JourDeLaSemaine" type="Node2D"]
-script = ExtResource("1_vfyd7")
-
-[node name="Control" type="Control" parent="."]
+[node name="Jour" type="Control"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Contour" type="Sprite2D" parent="Control"]
-modulate = Color(0, 0, 0, 1)
-material = SubResource("CanvasItemMaterial_esocm")
-scale = Vector2(83, 33)
-texture = SubResource("CanvasTexture_023cw")
-
-[node name="Fond" type="Sprite2D" parent="Control"]
-material = SubResource("CanvasItemMaterial_wyulr")
-scale = Vector2(80, 30)
-texture = SubResource("CanvasTexture_t73uy")
-
-[node name="Jour" type="Label" parent="Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -55.0
-offset_top = -32.5
-offset_right = 15.0
-offset_bottom = -7.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_em1er")
+
+[node name="Contour" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+material = SubResource("CanvasItemMaterial_7v1kq")
+scale = Vector2(83, 33)
+texture = SubResource("CanvasTexture_midt0")
+
+[node name="Fond" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_c0a5o")
+scale = Vector2(80, 30)
+texture = SubResource("CanvasTexture_xrhyp")
+
+[node name="Jour" type="Label" parent="."]
+layout_mode = 1
+offset_left = -35.0
+offset_top = -12.0
+offset_right = 35.0
+offset_bottom = 13.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 11
 text = "Que veux tu"

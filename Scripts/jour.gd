@@ -1,6 +1,6 @@
-extends Node2D
+extends Control
 
-@onready var jour = get_node("Control/Jour")
+@onready var jour = get_node("Jour")
 
 var current_jour : String
 var set_Jour : String :

@@ -4,7 +4,7 @@ var jour = ["Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi"]
 var jour_node_array =[]
 
 @onready var container = get_node("Box/Container/Grid")
-@onready var jour_node = preload("res://Node/jour.tscn")
+@onready var jour_node = preload("res://Node/Jour.tscn")
 # Called when the node enters the scene tree for the first time.
 
 func _ready():
