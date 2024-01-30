@@ -1,6 +1,6 @@
 extends Control
 
-@onready var jour = get_node("Jour")
+@onready var jour = get_node("Fond/Jour")
 
 var current_jour : String
 var set_Jour : String :

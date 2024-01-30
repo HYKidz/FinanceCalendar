@@ -1,6 +1,6 @@
-extends Node2D
+extends Control
 
-@onready var date = get_node("Date")
+@onready var date = get_node("fond/Date")
 
 var num_date : int
 

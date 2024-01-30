@@ -1,43 +1,55 @@
-[gd_scene load_steps=6 format=3 uid="uid://cvpe5k0vc734t"]
+[gd_scene load_steps=2 format=3 uid="uid://cvpe5k0vc734t"]
 
 [ext_resource type="Script" path="res://Scripts/jour.gd" id="1_em1er"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7v1kq"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_midt0"]
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_c0a5o"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_xrhyp"]
-
 [node name="Jour" type="Control"]
+custom_minimum_size = Vector2(83, 33)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -1068.0
+offset_bottom = -614.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 script = ExtResource("1_em1er")
 
-[node name="Contour" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 0, 1)
-material = SubResource("CanvasItemMaterial_7v1kq")
-scale = Vector2(83, 33)
-texture = SubResource("CanvasTexture_midt0")
-
-[node name="Fond" type="Sprite2D" parent="."]
-material = SubResource("CanvasItemMaterial_c0a5o")
-scale = Vector2(80, 30)
-texture = SubResource("CanvasTexture_xrhyp")
-
-[node name="Jour" type="Label" parent="."]
+[node name="Contour" type="ColorRect" parent="."]
 layout_mode = 1
-offset_left = -35.0
-offset_top = -12.0
-offset_right = 35.0
-offset_bottom = 13.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42.0
+offset_top = -17.0
+offset_right = 42.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Fond" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -15.0
+offset_right = 40.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Jour" type="Label" parent="Fond"]
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 30.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 11
-text = "Que veux tu"
+text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
