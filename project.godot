@@ -15,6 +15,14 @@ run/main_scene="res://Node/calendar.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
+[aseprite_importers]
+
+aseprite_executable_path="E:/Steam/steamapps/common/Aseprite/Aseprite.exe"
+
 [dotnet]
 
 project/assembly_name="Calendar"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/nklbdev.aseprite_importers/plugin.cfg")

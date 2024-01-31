@@ -14,3 +14,11 @@ func _ready():
 		# canvasgroup.add_child(new_jour)
 
 	pass # Replace with function body.
+
+
+func _on_next_pressed():
+	pass # Replace with function body.
+
+
+func _on_previous_pressed():
+	pass # Replace with function body.
