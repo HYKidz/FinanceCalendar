@@ -1,6 +1,6 @@
 extends Node2D
 
-var jour = ["Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi"]
+
 var jour_node_array =[]
 var date_node_array =[]
 
@@ -13,12 +13,13 @@ var date_node_array =[]
 @onready var date_node = preload("res://Node/date.tscn")
 @onready var date_vide_node = preload("res://Node/dateVide.tscn")
 @onready var jour_node = preload("res://Node/Jour.tscn")
+var calendrier_class = load("res://Class/Calendrier.gd").new()
 
 # Called when the node enters the scene tree for the first time.
 
 func _ready():
 	# jour_node_array.resize(7)
-	for d in jour:
+	for d in calendrier_class.jour:
 		var new_jour = jour_node.instantiate()
 		new_jour.name = d
 		jour_node_array.push_back(new_jour)
@@ -26,33 +27,31 @@ func _ready():
 	
 	for i in 7:
 		var jour_en_cour = jour_node_array[i]
-		jour_en_cour.set_Jour = jour[i]
+		jour_en_cour.set_Jour = calendrier_class.jour[i]
 	
-	InstanceDate()
+	# InstanceDate()
 		
 
 
-func InstanceDate():
-	
+func InstanceDate(m,y):
+	for n in date_node_array:
+		n.queue_free()
+	date_node_array.clear()
 	#change for current month
-	var currentday = get_beginning_weekday(1,2024)
-	var totalday = 31+currentday
+	var currentday = calendrier_class.get_beginning_weekday(m,y)
+	var totalday = calendrier_class.get_days_in_month(m,y)+currentday
 	for i in totalday:
 		if i<currentday:
-			print("moisPasser")
 			var new_date = date_vide_node.instantiate()
-			container.add_child(new_date)
-		else :
-			print("moisActuel")
-			var new_date = date_node.instantiate()
-			new_date.name = str(i-currentday)
 			date_node_array.push_back(new_date)
 			container.add_child(new_date)
-	for i in 31 :
-		date_node_array[i].Num = i+1
+		else :
+			var new_date = date_node.instantiate()
+			new_date.name = str(i-currentday)
+			new_date.Jour = i%7
+			date_node_array.push_back(new_date)
+			container.add_child(new_date)
+	for i in calendrier_class.get_days_in_month(m,y) :
+		date_node_array[i+currentday].Date = i+1
 	
-func get_beginning_weekday(m, y, d=1):
 
-	var t = [0,3,2,5,0,3,1,4,6,2,4]
-	if m <3 : y-= 1
-	return(y + y/4 - y/100 + y/400 + t[m-1] + d) % 7
