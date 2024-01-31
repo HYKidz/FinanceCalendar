@@ -7,4 +7,4 @@
 script = ExtResource("1_vwx50")
 
 [node name="JourEnRow" parent="." instance=ExtResource("2_hiuxa")]
-position = Vector2(150, 150)
+position = Vector2(148, 58)

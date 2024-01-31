@@ -1,8 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://bi74h3c5a7wjk"]
+[gd_scene format=3 uid="uid://b8khy3bpgqaw"]
 
-[ext_resource type="Script" path="res://Scripts/Date.gd" id="1_muqs4"]
-
-[node name="Date" type="Control"]
+[node name="DateVide" type="Control"]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -13,7 +11,6 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-script = ExtResource("1_muqs4")
 
 [node name="Contour" type="ColorRect" parent="."]
 layout_mode = 1
@@ -43,13 +40,4 @@ offset_right = 40.0
 offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Date" type="Label" parent="Fond"]
-layout_mode = 0
-offset_right = 80.0
-offset_bottom = 80.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "0
-"
-horizontal_alignment = 1
-vertical_alignment = 1
+color = Color(0.164706, 0.164706, 0.164706, 1)
