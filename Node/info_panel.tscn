@@ -154,6 +154,22 @@ button_group = ExtResource("3_kgkow")
 text = "Date
 "
 
+[node name="NbJour" type="Control" parent="Contour/Fond/Option/Recuring"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Jour" type="SpinBox" parent="Contour/Fond/Option/Recuring/NbJour"]
+layout_mode = 0
+offset_left = 129.0
+offset_top = 151.0
+offset_right = 232.0
+offset_bottom = 191.0
+theme = ExtResource("3_btqb3")
+prefix = "0"
+suffix = "Jour"
+
 [node name="ZoneMontant" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -232,14 +248,15 @@ offset_bottom = 18.0
 layout_mode = 0
 offset_left = -7.0
 offset_top = -1.0
-offset_right = 60.0
+offset_right = 39.0
 offset_bottom = 37.0
 color = Color(0.560955, 0.560955, 0.560955, 1)
 
 [node name="Heure" type="SpinBox" parent="RevenuOption/SalarialOption/Fond"]
 layout_mode = 0
 offset_right = 83.0625
-offset_bottom = 39.0
+offset_bottom = 38.0
+scale = Vector2(0.685, 1)
 suffix = "H"
 
 [node name="DepenseOption" type="Control" parent="."]
@@ -276,10 +293,10 @@ text = "Aplliquer"
 
 [node name="Color" type="ColorPicker" parent="."]
 layout_mode = 0
-offset_left = -87.0
-offset_top = 209.0
-offset_right = 179.0
-offset_bottom = 473.0
+offset_left = -63.0
+offset_top = 221.0
+offset_right = 191.0
+offset_bottom = 485.0
 edit_alpha = false
 sampler_visible = false
 color_modes_visible = false
@@ -290,7 +307,9 @@ presets_visible = false
 [connection signal="toggled" from="Contour/Fond/Option/Depense" to="." method="_on_depense_toggled"]
 [connection signal="toggled" from="Contour/Fond/Option/Revenu" to="." method="_on_revenu_toggled"]
 [connection signal="toggled" from="Contour/Fond/Option/Recurent" to="." method="_on_recurent_toggled"]
+[connection signal="toggled" from="Contour/Fond/Option/Recuring/Jour" to="." method="_on_jour_toggled"]
 [connection signal="toggled" from="Contour/Fond/Option/Recuring/Date" to="." method="_on_date_toggled"]
+[connection signal="value_changed" from="Contour/Fond/Option/Recuring/NbJour/Jour" to="." method="_on_jour_value_changed"]
 [connection signal="value_changed" from="ZoneMontant/Montant" to="." method="_on_montant_value_changed"]
 [connection signal="toggled" from="RevenuOption/Fixe" to="." method="_on_fixe_toggled"]
 [connection signal="toggled" from="RevenuOption/Salarial" to="." method="_on_salarial_toggled"]

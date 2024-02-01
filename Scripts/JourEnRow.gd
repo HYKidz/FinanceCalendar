@@ -69,13 +69,19 @@ func Regle(m:Dictionary):
 	Apply_Regle()
 
 func Apply_Regle():
+	# var recuringWeekDay 
 	for r in dict_regle:
+		# recuringWeekDay = r["jour_recurente"]
 		if r["recurent"]:
 			if !r["date_recurente"]:
 				for d in date_node_array.size():
 					var node = date_node_array[d]
 					if d%7 == r["jour"]&&node.is_in_group("date"):
+						# recuringWeekDay-=1
+						# print(calendrier_class.get_time_between_two_date(1,1,2000,1,1,2024))
 						node.Couleur = r["color"]
+						# if recuringWeekDay <= 0:
+						# 	recuringWeekDay=r["jour_recurente"]
 			else:
 				date_node_array[r["date"]+currentday-1].Couleur = r["color"]
 		else:

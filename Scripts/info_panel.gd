@@ -9,6 +9,7 @@ var salarial_b : bool
 var recurent_b : bool
 var date_b:bool
 
+var jour_recurent:int
 var date:int
 var jour:int
 var mois:int
@@ -19,6 +20,7 @@ var heure:int
 
 @export var group: ButtonGroup 
 @onready var date_label = get_node("Contour/Fond/Date") 
+@onready var jour_label = get_node("Contour/Fond/Option/Recuring/NbJour") 
 @onready var rev_option = get_node("RevenuOption") 
 @onready var salarial_option = get_node("RevenuOption/SalarialOption") 
 @onready var recurent_option = get_node("Contour/Fond/Option/Recuring") 
@@ -56,6 +58,13 @@ func _on_heure_value_changed(value):
 
 func _on_date_toggled(button_pressed:bool):
 	date_b = button_pressed
+
+func _on_jour_toggled(button_pressed):
+	jour_label.visible = button_pressed
+
+func _on_jour_value_changed(value):
+	jour_recurent = value
+	
 	
 
 
@@ -94,6 +103,7 @@ func _on_button_pressed():
 		"montant": montant,
 		"heure": heure,
 		"date_recurente":date_b,
+		"jour_recurente":jour_recurent, 
 		"date":date,
 		"jour":jour,
 		"mois":mois,
@@ -104,6 +114,12 @@ func _on_button_pressed():
 	}
 	# print(calendar)
 	calendar.Regle(m)
+
+
+
+
+
+
 
 
 
