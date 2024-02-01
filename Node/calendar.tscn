@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://lofglxy8wh6u"]
+[gd_scene load_steps=5 format=3 uid="uid://lofglxy8wh6u"]
 
 [ext_resource type="Script" path="res://Scripts/calendar.gd" id="1_vwx50"]
 [ext_resource type="PackedScene" uid="uid://3brj710nljde" path="res://Node/jour_en_row.tscn" id="2_hiuxa"]
 [ext_resource type="Texture2D" uid="uid://bs3dgovprnhrg" path="res://Sprite/Arrow.png" id="3_1381w"]
+[ext_resource type="PackedScene" uid="uid://qo52532jfpfu" path="res://Node/info_panel.tscn" id="4_x37n4"]
 
 [node name="Calendar" type="Node2D"]
 script = ExtResource("1_vwx50")
@@ -75,6 +76,13 @@ metadata/_aseprite_wizard_config_ = {
 "player": "",
 "source": "res://Sprite/Arrow.aseprite"
 }
+
+[node name="InfoPanel" parent="." instance=ExtResource("4_x37n4")]
+visible = false
+offset_left = 884.0
+offset_top = 219.0
+offset_right = 884.0
+offset_bottom = 219.0
 
 [connection signal="pressed" from="Fond/Next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="Fond/Previous" to="." method="_on_previous_pressed"]

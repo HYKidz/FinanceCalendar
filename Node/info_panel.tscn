@@ -1,0 +1,277 @@
+[gd_scene load_steps=5 format=3 uid="uid://qo52532jfpfu"]
+
+[ext_resource type="Script" path="res://Scripts/info_panel.gd" id="1_qwqf2"]
+[ext_resource type="ButtonGroup" uid="uid://c1i40ld8ye3r8" path="res://ButtonGroups/ButtonRecurent.tres" id="2_o3q8l"]
+[ext_resource type="Theme" uid="uid://dwfksjb461aqc" path="res://Font/TextSalaire.tres" id="3_btqb3"]
+[ext_resource type="ButtonGroup" uid="uid://c6otcoqux05uc" path="res://ButtonGroups/ButtonTypeRevenu.tres" id="3_ljn0s"]
+
+[node name="InfoPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_qwqf2")
+group = ExtResource("2_o3q8l")
+
+[node name="Contour" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.0
+offset_top = -177.5
+offset_right = 110.0
+offset_bottom = 177.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Fond" type="ColorRect" parent="Contour"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -107.5
+offset_top = -175.0
+offset_right = 107.5
+offset_bottom = 175.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Date" type="Label" parent="Contour/Fond"]
+layout_mode = 0
+offset_left = 0.5
+offset_top = 25.5
+offset_right = 215.5
+offset_bottom = 51.5
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Date"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Option" type="Control" parent="Contour/Fond"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Depense" type="CheckButton" parent="Contour/Fond/Option"]
+offset_left = 9.0
+offset_top = 63.0
+offset_right = 108.0
+offset_bottom = 89.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.768627, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.52549, 0.0901961, 0.0901961, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+button_pressed = true
+button_group = ExtResource("2_o3q8l")
+text = "Depense"
+alignment = 1
+icon_alignment = 1
+
+[node name="Revenu" type="CheckButton" parent="Contour/Fond/Option"]
+offset_left = 102.5
+offset_top = 61.5
+offset_right = 201.5
+offset_bottom = 87.5
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.878431, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0.407843, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+button_group = ExtResource("2_o3q8l")
+text = "Revenu"
+alignment = 1
+icon_alignment = 1
+
+[node name="Recurent" type="CheckButton" parent="Contour/Fond/Option"]
+offset_left = 58.5
+offset_top = 85.0
+offset_right = 159.5
+offset_bottom = 109.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 11
+text = "Recurrent"
+
+[node name="Recuring" type="Control" parent="Contour/Fond/Option"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Jour" type="CheckButton" parent="Contour/Fond/Option/Recuring"]
+layout_mode = 0
+offset_left = 112.5
+offset_top = 109.0
+offset_right = 186.5
+offset_bottom = 133.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 11
+text = "Jour
+"
+
+[node name="Date" type="CheckButton" parent="Contour/Fond/Option/Recuring"]
+layout_mode = 0
+offset_left = 22.5
+offset_top = 109.0
+offset_right = 96.5
+offset_bottom = 133.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 11
+text = "Date
+"
+
+[node name="ZoneMontant" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -92.0
+offset_top = -22.5
+offset_right = -27.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.560784, 0.560784, 0.560784, 1)
+
+[node name="Montant" type="SpinBox" parent="ZoneMontant"]
+layout_mode = 0
+offset_right = 65.388
+offset_bottom = 38.0
+theme = ExtResource("3_btqb3")
+max_value = 100000.0
+suffix = "$"
+
+[node name="RevenuOption" type="Control" parent="."]
+visible = false
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Fixe" type="CheckButton" parent="RevenuOption"]
+layout_mode = 0
+offset_left = -90.0
+offset_top = 29.0
+offset_right = -20.0
+offset_bottom = 54.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+button_pressed = true
+button_group = ExtResource("3_ljn0s")
+text = "fixe"
+
+[node name="Salarial" type="CheckButton" parent="RevenuOption"]
+layout_mode = 0
+offset_left = -15.0
+offset_top = 30.0
+offset_right = 76.0
+offset_bottom = 55.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+button_group = ExtResource("3_ljn0s")
+text = "Salarial"
+
+[node name="SalarialOption" type="Control" parent="RevenuOption"]
+visible = false
+anchors_preset = 0
+offset_left = -17.0
+offset_top = -22.0
+offset_right = 89.0
+offset_bottom = 18.0
+
+[node name="Fond" type="ColorRect" parent="RevenuOption/SalarialOption"]
+layout_mode = 0
+offset_left = -7.0
+offset_top = -1.0
+offset_right = 60.0
+offset_bottom = 37.0
+color = Color(0.560955, 0.560955, 0.560955, 1)
+
+[node name="SpinBox" type="SpinBox" parent="RevenuOption/SalarialOption/Fond"]
+layout_mode = 0
+offset_right = 83.0625
+offset_bottom = 39.0
+suffix = "H"
+
+[node name="DepenseOption" type="Control" parent="."]
+anchors_preset = 0
+offset_left = -107.0
+offset_top = -175.0
+offset_right = 107.0
+offset_bottom = 175.0
+mouse_filter = 2
+
+[node name="Description" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -87.0
+offset_top = 56.0
+offset_right = 89.0
+offset_bottom = 139.0
+color = Color(0.560955, 0.560955, 0.560955, 1)
+
+[node name="Description" type="TextEdit" parent="Description"]
+layout_mode = 0
+offset_right = 176.0
+offset_bottom = 85.0
+theme_override_font_sizes/font_size = 11
+placeholder_text = "Description"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = -72.0
+offset_top = 146.0
+offset_right = 72.0
+offset_bottom = 170.0
+theme_override_font_sizes/font_size = 11
+text = "Aplliquer"
+
+[connection signal="toggled" from="Contour/Fond/Option/Depense" to="." method="_on_depense_toggled"]
+[connection signal="toggled" from="Contour/Fond/Option/Revenu" to="." method="_on_revenu_toggled"]
+[connection signal="toggled" from="Contour/Fond/Option/Recurent" to="." method="_on_recurent_toggled"]
+[connection signal="value_changed" from="ZoneMontant/Montant" to="." method="_on_montant_value_changed"]
+[connection signal="toggled" from="RevenuOption/Fixe" to="." method="_on_fixe_toggled"]
+[connection signal="toggled" from="RevenuOption/Salarial" to="." method="_on_salarial_toggled"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

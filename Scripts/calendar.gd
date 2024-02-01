@@ -9,6 +9,7 @@ var calendrier_class = load("res://Class/Calendrier.gd").new()
 var date_array_selection
 @onready var le_titre_mois = get_node("Fond/Mois")
 @onready var le_calendrier = get_node("JourEnRow")
+@onready var info_panel = get_node("InfoPanel")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -20,6 +21,7 @@ func _ready():
 
 
 func _on_next_pressed():
+	info_panel.visible = false
 	current_month+=1
 	if current_month>12:
 		current_month=1
@@ -33,6 +35,7 @@ func _on_next_pressed():
 
 
 func _on_previous_pressed():
+	info_panel.visible = false
 	current_month-=1
 	if current_month<1:
 		current_month=12
@@ -45,4 +48,6 @@ func ShiftedClicked(date):
 	print(date)
 	
 func Clicked(date):
+	info_panel.visible = true
+	info_panel._on_clicked_date(date.Date,date.Jour)
 	print(date)
