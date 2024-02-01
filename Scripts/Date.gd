@@ -1,11 +1,22 @@
 extends Control
 
+
 @onready var date = get_node("Fond/Date")
+@onready var fond = get_node("Fond")
 @onready var calendar = get_node("../../../../../Calendar")
+
 var calendrier_class = load("res://Class/Calendrier.gd").new()
+
+
 
 var num_date : int
 var jour_semaine :int
+var mois:int
+var anne:int
+
+var Couleur : Color:
+	set(value):
+		fond.color = value
 
 var Jour:int:
 	get:
@@ -13,6 +24,17 @@ var Jour:int:
 	set(value):
 		jour_semaine = value
 
+var Mois:int:
+	get:
+		return mois
+	set(value):
+		mois = value
+
+var Anne:int:
+	get:
+		return anne
+	set(value):
+		anne = value
 
 var Date :int:
 	get:

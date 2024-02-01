@@ -80,9 +80,9 @@ metadata/_aseprite_wizard_config_ = {
 [node name="InfoPanel" parent="." instance=ExtResource("4_x37n4")]
 visible = false
 offset_left = 884.0
-offset_top = 219.0
+offset_top = 186.0
 offset_right = 884.0
-offset_bottom = 219.0
+offset_bottom = 186.0
 
 [connection signal="pressed" from="Fond/Next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="Fond/Previous" to="." method="_on_previous_pressed"]

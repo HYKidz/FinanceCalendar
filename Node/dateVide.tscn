@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b8khy3bpgqaw"]
 
-[node name="DateVide" type="Control"]
+[node name="DateVide" type="Control" groups=["vide"]]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5

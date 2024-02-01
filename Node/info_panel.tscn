@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://qo52532jfpfu"]
+[gd_scene load_steps=6 format=3 uid="uid://qo52532jfpfu"]
 
 [ext_resource type="Script" path="res://Scripts/info_panel.gd" id="1_qwqf2"]
 [ext_resource type="ButtonGroup" uid="uid://c1i40ld8ye3r8" path="res://ButtonGroups/ButtonRecurent.tres" id="2_o3q8l"]
 [ext_resource type="Theme" uid="uid://dwfksjb461aqc" path="res://Font/TextSalaire.tres" id="3_btqb3"]
+[ext_resource type="ButtonGroup" uid="uid://bcrhvnjgm6ltd" path="res://ButtonGroups/ButtonJourDate.tres" id="3_kgkow"]
 [ext_resource type="ButtonGroup" uid="uid://c6otcoqux05uc" path="res://ButtonGroups/ButtonTypeRevenu.tres" id="3_ljn0s"]
 
 [node name="InfoPanel" type="Control"]
@@ -66,6 +67,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Depense" type="CheckButton" parent="Contour/Fond/Option"]
+layout_mode = 0
 offset_left = 9.0
 offset_top = 63.0
 offset_right = 108.0
@@ -83,6 +85,7 @@ alignment = 1
 icon_alignment = 1
 
 [node name="Revenu" type="CheckButton" parent="Contour/Fond/Option"]
+layout_mode = 0
 offset_left = 102.5
 offset_top = 61.5
 offset_right = 201.5
@@ -99,6 +102,7 @@ alignment = 1
 icon_alignment = 1
 
 [node name="Recurent" type="CheckButton" parent="Contour/Fond/Option"]
+layout_mode = 0
 offset_left = 58.5
 offset_top = 85.0
 offset_right = 159.5
@@ -130,6 +134,7 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 11
+button_group = ExtResource("3_kgkow")
 text = "Jour
 "
 
@@ -145,6 +150,7 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 11
+button_group = ExtResource("3_kgkow")
 text = "Date
 "
 
@@ -230,7 +236,7 @@ offset_right = 60.0
 offset_bottom = 37.0
 color = Color(0.560955, 0.560955, 0.560955, 1)
 
-[node name="SpinBox" type="SpinBox" parent="RevenuOption/SalarialOption/Fond"]
+[node name="Heure" type="SpinBox" parent="RevenuOption/SalarialOption/Fond"]
 layout_mode = 0
 offset_right = 83.0625
 offset_bottom = 39.0
@@ -259,7 +265,7 @@ offset_bottom = 85.0
 theme_override_font_sizes/font_size = 11
 placeholder_text = "Description"
 
-[node name="Button" type="Button" parent="."]
+[node name="Send" type="Button" parent="."]
 layout_mode = 0
 offset_left = -72.0
 offset_top = 146.0
@@ -268,10 +274,25 @@ offset_bottom = 170.0
 theme_override_font_sizes/font_size = 11
 text = "Aplliquer"
 
+[node name="Color" type="ColorPicker" parent="."]
+layout_mode = 0
+offset_left = -87.0
+offset_top = 209.0
+offset_right = 179.0
+offset_bottom = 473.0
+edit_alpha = false
+sampler_visible = false
+color_modes_visible = false
+sliders_visible = false
+hex_visible = false
+presets_visible = false
+
 [connection signal="toggled" from="Contour/Fond/Option/Depense" to="." method="_on_depense_toggled"]
 [connection signal="toggled" from="Contour/Fond/Option/Revenu" to="." method="_on_revenu_toggled"]
 [connection signal="toggled" from="Contour/Fond/Option/Recurent" to="." method="_on_recurent_toggled"]
+[connection signal="toggled" from="Contour/Fond/Option/Recuring/Date" to="." method="_on_date_toggled"]
 [connection signal="value_changed" from="ZoneMontant/Montant" to="." method="_on_montant_value_changed"]
 [connection signal="toggled" from="RevenuOption/Fixe" to="." method="_on_fixe_toggled"]
 [connection signal="toggled" from="RevenuOption/Salarial" to="." method="_on_salarial_toggled"]
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="value_changed" from="RevenuOption/SalarialOption/Fond/Heure" to="." method="_on_heure_value_changed"]
+[connection signal="pressed" from="Send" to="." method="_on_button_pressed"]

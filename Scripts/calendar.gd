@@ -1,9 +1,9 @@
 extends Node2D
 
 
-
 var current_month 
 var current_year 
+
 var date_today = Time.get_date_dict_from_system()
 var calendrier_class = load("res://Class/Calendrier.gd").new()
 var date_array_selection
@@ -49,5 +49,19 @@ func ShiftedClicked(date):
 	
 func Clicked(date):
 	info_panel.visible = true
-	info_panel._on_clicked_date(date.Date,date.Jour)
+	info_panel._on_clicked_date(date.Date,date.Jour,date.Mois,date.Anne)
 	print(date)
+	
+# func SetInfoDate(m:Dictionary):
+# 	info_panel.visible = false
+# 	dict_regle.push_back(m)
+# 	Verifier_Regle()
+
+# func Verifier_Regle():
+# 	var montant_finale
+# 	for r in dict_regle :
+# 		le_calendrier.Regle(r["date_transaction"],r["couleur"],r["recurent"],r["date_recurente"],r["jour"])
+# 		# if r["depense"]:
+
+
+

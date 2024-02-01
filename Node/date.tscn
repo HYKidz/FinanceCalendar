@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Date.gd" id="1_muqs4"]
 
-[node name="Date" type="Control"]
+[node name="Date" type="Control" groups=["date"]]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
