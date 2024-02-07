@@ -96,6 +96,8 @@ func _on_depense_toggled(button_pressed):
 
 
 func _on_button_pressed():
+	if jour_recurent ==0:
+		jour_recurent=1
 	var m ={
 		"depense":depense_b,
 		"recurent":recurent_b,
@@ -104,6 +106,7 @@ func _on_button_pressed():
 		"heure": heure,
 		"date_recurente":date_b,
 		"jour_recurente":jour_recurent, 
+		"jour_recurente_actuel":jour_recurent, 
 		"date":date,
 		"jour":jour,
 		"mois":mois,

@@ -38,6 +38,12 @@ func _ready():
 
 
 func InstanceDate(m,y):
+	var nextmonth = current_month<m
+	if current_month ==12&&m==1:
+		nextmonth = true
+	elif current_month ==1 && m==12:
+		nextmonth =false
+	
 	current_month = m
 	current_year=y
 	for n in date_node_array:
@@ -55,6 +61,7 @@ func InstanceDate(m,y):
 		else :
 			var new_date = date_node.instantiate()
 			new_date.name = str(i-currentday)
+
 			new_date.Jour = i%7
 			new_date.Anne = y
 			new_date.Mois = m
@@ -62,26 +69,38 @@ func InstanceDate(m,y):
 			container.add_child(new_date)
 	for i in calendrier_class.get_days_in_month(m,y) :
 		date_node_array[i+currentday].Date = i+1
-	Apply_Regle()
+	Apply_Regle(nextmonth)
 
 func Regle(m:Dictionary):
 	dict_regle.push_back(m)
-	Apply_Regle()
+	Apply_Regle(true)
 
-func Apply_Regle():
+func Apply_Regle(nm):
+	print(nm)
 	# var recuringWeekDay 
-	for r in dict_regle:
-		# recuringWeekDay = r["jour_recurente"]
+	for r in dict_regle: 
 		if r["recurent"]:
 			if !r["date_recurente"]:
 				for d in date_node_array.size():
 					var node = date_node_array[d]
-					if d%7 == r["jour"]&&node.is_in_group("date"):
-						# recuringWeekDay-=1
-						# print(calendrier_class.get_time_between_two_date(1,1,2000,1,1,2024))
-						node.Couleur = r["color"]
-						# if recuringWeekDay <= 0:
-						# 	recuringWeekDay=r["jour_recurente"]
+					if node.is_in_group("date"):
+						var dictinit ={
+							"year":r["anne"],
+							"month":r["mois"],
+							"day":r["date"]
+						}
+						var dictactu ={
+							"year":node.Anne,
+							"month":node.Mois,
+							"day":node.Date
+						}
+						var tempinit = Time.get_unix_time_from_datetime_dict(dictinit)
+						var tempactu = Time.get_unix_time_from_datetime_dict(dictactu)
+						var tempdif = (tempactu-tempinit)/86400
+						
+						if d%7 == r["jour"]&&tempdif%r["jour_recurente"]==0&&tempdif>=0:
+							print(tempdif%r["jour_recurente"])
+							node.Couleur = r["color"]
 			else:
 				date_node_array[r["date"]+currentday-1].Couleur = r["color"]
 		else:

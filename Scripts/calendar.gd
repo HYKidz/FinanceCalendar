@@ -50,7 +50,8 @@ func ShiftedClicked(date):
 func Clicked(date):
 	info_panel.visible = true
 	info_panel._on_clicked_date(date.Date,date.Jour,date.Mois,date.Anne)
-	print(date)
+	# var temp = Time.get_datetime_string_from_unix_time(date.Anne-date.Mois-date.Date)
+	# print(temp)
 	
 # func SetInfoDate(m:Dictionary):
 # 	info_panel.visible = false
