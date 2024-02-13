@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/JourEnRow.gd" id="1_hqlg3"]
 
 [node name="JourEnRow" type="Node2D"]
+scale = Vector2(0.8, 0.8)
 script = ExtResource("1_hqlg3")
 
 [node name="Box" type="BoxContainer" parent="."]
