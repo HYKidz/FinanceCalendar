@@ -21,9 +21,12 @@ var heure:int
 @export var group: ButtonGroup 
 @onready var date_label = get_node("Contour/Fond/Date") 
 @onready var jour_label = get_node("Contour/Fond/Option/Recuring/NbJour") 
-@onready var rev_option = get_node("RevenuOption") 
-@onready var salarial_option = get_node("RevenuOption/SalarialOption") 
-@onready var recurent_option = get_node("Contour/Fond/Option/Recuring") 
+@export var rev_option : Node
+@export var salarial_option : Node
+@export var recurent_option : Node
+# @onready var rev_option = get_node("RevenuOption") 
+# @onready var salarial_option = get_node("RevenuOption/SalarialOption") 
+# @onready var recurent_option = get_node("Contour/Fond/Option/Recuring") 
 @onready var couleur = get_node("Color")
 @onready var calendar = get_node("../JourEnRow")
 @onready var description = get_node("Description/Description")

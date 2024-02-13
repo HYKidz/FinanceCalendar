@@ -23,15 +23,18 @@ var calendrier_class = load("res://Class/Calendrier.gd").new()
 
 func _ready():
 	# jour_node_array.resize(7)
-	for d in calendrier_class.jour:
+	# print(calendrier_class.jour.size())
+	for d in calendrier_class.jour.size():
 		var new_jour = jour_node.instantiate()
-		new_jour.name = d
+		new_jour.init()
+		new_jour.name = calendrier_class.jour[d]
+		new_jour.set_Jour = d
 		jour_node_array.push_back(new_jour)
 		container.add_child(new_jour)
 	
-	for i in 7:
-		var jour_en_cour = jour_node_array[i]
-		jour_en_cour.set_Jour = calendrier_class.jour[i]
+	# for i in 7:
+	# 	var jour_en_cour = jour_node_array[i]
+	# 	jour_en_cour.set_Jour = calendrier_class.jour[i]
 	
 	# InstanceDate()
 		
