@@ -3,7 +3,7 @@ extends Control
 
 @onready var date = get_node("Fond/Date")
 @onready var fond = get_node("Fond")
-@onready var calendar = get_node("../../../../../Calendar")
+@onready var calendar = get_node("../../../../../../../Calendar")
 
 var calendrier_class = load("res://Class/Calendrier.gd").new()
 
@@ -51,8 +51,8 @@ func _ready():
 
 func _on_fond_gui_input(_event):
 
-	if Input.is_action_pressed("Shift_Left_Mouse_Click"):
-		calendar.ShiftedClicked(self)
-		return
-	if Input.is_action_pressed("Left_Mouse_Click"):
+	# if Input.is_action_pressed("Shift_Left_Mouse_Click"):
+	# 	calendar.ShiftedClicked(self)
+	# 	return
+	if Input.is_action_pressed("Left_Mouse_Click")&& self.is_in_group("info_date"):
 		calendar.Clicked(self)

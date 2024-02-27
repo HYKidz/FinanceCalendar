@@ -78,8 +78,7 @@ func Regle(m:Dictionary):
 	dict_regle.push_back(m)
 	Apply_Regle(true)
 
-func Apply_Regle(nm):
-	print(nm)
+func Apply_Regle(_nm):
 	# var recuringWeekDay 
 	for r in dict_regle: 
 		if r["recurent"]:
