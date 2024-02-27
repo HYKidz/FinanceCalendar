@@ -84,13 +84,14 @@ func Apply_Regle(_nm):
 	for r in dict_regle: 
 		if r["recurent"]:
 			if !r["date_recurente"]:
+				#Refactor, cause cant make work of two jour
 				for d in date_node_array.size():
 					var node = date_node_array[d]
 					if node.is_in_group("date"):
 						var dictinit ={
-							"year":r["anne"],
-							"month":r["mois"],
-							"day":r["date"]
+							"year":r["starting_anne"],
+							"month":r["starting_mois"],
+							"day":r["starting_jour"]
 						}
 						var dictactu ={
 							"year":node.Anne,
@@ -100,10 +101,11 @@ func Apply_Regle(_nm):
 						var tempinit = Time.get_unix_time_from_datetime_dict(dictinit)
 						var tempactu = Time.get_unix_time_from_datetime_dict(dictactu)
 						var tempdif = (tempactu-tempinit)/86400
-						
-						if d%7 == r["jour"]&&tempdif%r["jour_recurente"]==0&&tempdif>=0:
+						# print(r["jour"][0])
+						if d%7 == r["jour"][0].set_Jour&&tempdif%r["jour_recurente"]==0&&tempdif>=0:
 							print(tempdif%r["jour_recurente"])
 							node.Couleur = r["color"]
+					#***
 			else:
 				for d in r["date"]:
 					date_node_array[d["Date"]+currentday-1].Couleur = r["color"]

@@ -243,6 +243,7 @@ layout_mode = 2
 text = "Starting Jour"
 
 [node name="JourDebut" type="OptionButton" parent="Contour/Fond/Selection/Jour"]
+visible = false
 layout_mode = 2
 
 [node name="Date" type="GridContainer" parent="Contour/Fond/Selection"]
@@ -527,10 +528,10 @@ text = "Aplliquer"
 
 [node name="Color" type="ColorPicker" parent="."]
 layout_mode = 0
-offset_left = 397.0
-offset_top = 230.0
-offset_right = 671.0
-offset_bottom = 494.0
+offset_left = 429.0
+offset_top = 246.0
+offset_right = 687.0
+offset_bottom = 510.0
 edit_alpha = false
 sampler_visible = false
 color_modes_visible = false
@@ -544,6 +545,7 @@ presets_visible = false
 [connection signal="toggled" from="Contour/Fond/Option/Jour" to="." method="_on_jour_toggled"]
 [connection signal="toggled" from="Contour/Fond/Option/Date" to="." method="_on_date_toggled"]
 [connection signal="value_changed" from="Contour/Fond/Option/Recuring/NbJour/Jour" to="." method="_on_jour_value_changed"]
+[connection signal="item_selected" from="Contour/Fond/Selection/Jour/JourDebut" to="." method="_on_jour_debut_item_selected"]
 [connection signal="value_changed" from="ZoneMontant/Montant" to="." method="_on_montant_value_changed"]
 [connection signal="toggled" from="RevenuOption/Fixe" to="." method="_on_fixe_toggled"]
 [connection signal="toggled" from="RevenuOption/Salarial" to="." method="_on_salarial_toggled"]

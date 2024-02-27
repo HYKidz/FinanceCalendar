@@ -27,7 +27,8 @@ var anne:int
 @export var jour_option : Node
 # @export var date_option : Node
 @onready var date_option = get_node("Contour/Fond/Selection/Date")
-@onready var starting_jour = get_node("Contour/Fond/Selection/Jour/JourDebut")
+@onready var starting_jour_button = get_node("Contour/Fond/Selection/Jour/JourDebut")
+@onready var starting_jour : int
 # @onready var jour_option = get_node("Contour/Fond/Selection/Date")
 @export var rev_option : Node
 @export var salarial_option : Node
@@ -131,6 +132,9 @@ func _on_date_toggled(button_pressed:bool):
 	for date in date_clicked:
 		date.Couleur = Color(1,1,1,1)
 	date_clicked.clear()
+	for jour in jour_clicked:
+		jour.Couleur = Color(1,1,1,1)
+	jour_clicked.clear()
 
 func _on_jour_toggled(button_pressed):
 	# recuring_jour = button_pressed
@@ -139,6 +143,9 @@ func _on_jour_toggled(button_pressed):
 	for date in date_clicked:
 		date.Couleur = Color(1,1,1,1)
 	date_clicked.clear()
+	for jour in jour_clicked:
+		jour.Couleur = Color(1,1,1,1)
+	jour_clicked.clear()
 
 func _on_jour_value_changed(value):
 	jour_recurent = value
@@ -172,9 +179,11 @@ func on_clicked_jour(jour):
 	if jour_clicked.has(jour):
 		return
 	jour_clicked.push_back(jour)
+	# starting_jour.visible = true
 	print(jour)
 	if jour_clicked.size()>0:
 		send_button.visible = true
+		starting_jour_button.visible = true
 	ajout_option()
 
 
@@ -191,14 +200,25 @@ func ajout_option():
 	var begining = calendrier_class.get_beginning_weekday(mois,anne)
 	var total = calendrier_class.get_days_in_month(mois,anne)
 	for i in total:
+		var e = i+begining
+		# print(e)
+		# print(calendrier_class.jour[e])
 		# print(i+begining%7)
-		if i%7==jour_clicked[0].set_Jour:
-			print(calendrier_class.jour[i%7])
-			print(i+begining)
+		# print(i+begining-1%7)
+		if e%7==jour_clicked[0].set_Jour:
+			print(e-begining+1)
+			starting_jour_button.add_item(str(e-begining+1))
+		# 	print("hello")
 		
+func _on_jour_debut_item_selected(index):
+	# starting_jour_button.label[index]
+	print(starting_jour_button.get_item_text(index))
+	# var current_selected = index
+	pass # Replace with function body.
 
 
 func _on_button_pressed():
+	var id = starting_jour_button.get_selected_id()
 	if jour_recurent ==0:
 		jour_recurent=1
 	var m ={
@@ -212,12 +232,18 @@ func _on_button_pressed():
 		"jour_recurente_actuel":jour_recurent, 
 		"date":date_clicked,
 		"jour":jour_clicked,
+		"starting_jour":starting_jour_button.get_item_text(id),
+		"starting_mois":mois,
+		"starting_anne":anne,
 		"description":description.text,
 		"color": couleur.color
 		
 	}
 	# print(jourEnRow)
 	jourEnRow.Regle(m)
+
+
+
 
 
 
