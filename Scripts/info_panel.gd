@@ -11,16 +11,24 @@ var date_b:bool
 
 var jour_recurent:int
 var date_node_array =[]
+var jour_node_array =[]
 
 var montant:int
 var heure:int
+var mois:int
+var anne:int
 
 @export var group: ButtonGroup 
 @onready var date_label = get_node("Contour/Fond/Date") 
 @onready var jour_label = get_node("Contour/Fond/Option/Recuring/NbJour") 
+@onready var recuring = get_node("Contour/Fond/Option/Recuring")
+@onready var jour_toggle = get_node("Contour/Fond/Option/Jour")
+@onready var send_button = get_node("Send")
 @export var jour_option : Node
 # @export var date_option : Node
 @onready var date_option = get_node("Contour/Fond/Selection/Date")
+@onready var starting_jour = get_node("Contour/Fond/Selection/Jour/JourDebut")
+# @onready var jour_option = get_node("Contour/Fond/Selection/Date")
 @export var rev_option : Node
 @export var salarial_option : Node
 @export var recurent_option : Node
@@ -28,23 +36,24 @@ var heure:int
 # @onready var salarial_option = get_node("RevenuOption/SalarialOption") 
 # @onready var recurent_option = get_node("Contour/Fond/Option/Recuring") 
 @onready var couleur = get_node("Color")
-@onready var calendar = get_node("../JourEnRow")
+@onready var jourEnRow = get_node("../JourEnRow")
 @onready var description = get_node("Description/Description")
 @onready var date_node = preload("res://Node/date.tscn")
 @onready var date_vide_node = preload("res://Node/dateVide.tscn")
 # @onready var container = get_node("Contour/Fond/Date/Fond/Date")
 # @onready var montant_edit = get_node("ZoneMontant/Montant") 
-
+var date_clicked = []
+var jour_clicked = []
 #keep in mind when you need to use signals
 
 func Init(m,y):
 	# print(date_option.name)
-	
+	mois =m
+	anne =y
 	date_node_array = date_option.get_children()
 	var totalday = calendrier_class.get_days_in_month(m,y)
-	print(totalday)
-	var nb_child = date_option.get_child_count()
-	for i in nb_child:
+	var nb_child_date = date_option.get_child_count()
+	for i in nb_child_date:
 
 		date_node_array[i].add_to_group("info_date")
 		date_node_array[i].visible = true
@@ -53,6 +62,13 @@ func Init(m,y):
 		date_node_array[i].Anne = y
 		if i+1 >totalday:
 			date_node_array[i].visible = false
+	
+	jour_node_array = jour_option.get_children()
+	# var nb_child_jour = jour_node_array.size()
+	for i in 7:
+		jour_node_array[i].add_to_group("info_jour")
+		jour_node_array[i].set_Jour = i
+		pass
 		
 # 	for i in group.get_buttons():
 # 		i.pressed.connect(button_pressed)
@@ -61,9 +77,9 @@ func Init(m,y):
 # 	print(group.get_pressed_button())
 	
 func Current_Month(m,y):
-	print("oof")
+	mois =m
+	anne =y
 	var totalday = calendrier_class.get_days_in_month(m,y)
-	print(totalday)
 	var nb_child = date_option.get_child_count()
 	for i in nb_child:
 		date_node_array[i].visible = true
@@ -98,7 +114,9 @@ func Current_Month(m,y):
 
 func _on_recurent_toggled(button_pressed):
 	recurent_b = button_pressed
+	recuring.visible = button_pressed
 	recurent_option.visible = button_pressed
+	jour_toggle.visible = button_pressed
 
 func _on_montant_value_changed(value):
 		montant = value
@@ -110,17 +128,21 @@ func _on_heure_value_changed(value):
 func _on_date_toggled(button_pressed:bool):
 	date_b = button_pressed
 	date_option.visible = button_pressed
+	for date in date_clicked:
+		date.Couleur = Color(1,1,1,1)
+	date_clicked.clear()
 
 func _on_jour_toggled(button_pressed):
+	# recuring_jour = button_pressed
 	jour_option.visible = button_pressed
 	jour_label.visible = button_pressed
+	for date in date_clicked:
+		date.Couleur = Color(1,1,1,1)
+	date_clicked.clear()
 
 func _on_jour_value_changed(value):
 	jour_recurent = value
 	
-func on_clicked_date(date):
-	print(date)
-
 
 #Gestion Revenu
 
@@ -146,31 +168,56 @@ func _on_salarial_toggled(button_pressed):
 func _on_depense_toggled(button_pressed):
 	depense_b = button_pressed
 
+func on_clicked_jour(jour):
+	if jour_clicked.has(jour):
+		return
+	jour_clicked.push_back(jour)
+	print(jour)
+	if jour_clicked.size()>0:
+		send_button.visible = true
+	ajout_option()
 
+
+func on_clicked_date(date):
+	if date_clicked.has(date):
+		return
+	date_clicked.push_back(date)
+	print(date)
+	if date_clicked.size()>0:
+		send_button.visible = true
+
+
+func ajout_option():
+	var begining = calendrier_class.get_beginning_weekday(mois,anne)
+	var total = calendrier_class.get_days_in_month(mois,anne)
+	for i in total:
+		# print(i+begining%7)
+		if i%7==jour_clicked[0].set_Jour:
+			print(calendrier_class.jour[i%7])
+			print(i+begining)
+		
 
 
 func _on_button_pressed():
 	if jour_recurent ==0:
 		jour_recurent=1
-	# var m ={
-	# 	"depense":depense_b,
-	# 	"recurent":recurent_b,
-	# 	"salarial":salarial_b,
-	# 	"montant": montant,
-	# 	"heure": heure,
-	# 	"date_recurente":date_b,
-	# 	"jour_recurente":jour_recurent, 
-	# 	"jour_recurente_actuel":jour_recurent, 
-	# 	"date":date,
-	# 	"jour":jour,
-	# 	"mois":mois,
-	# 	"anne":anne,
-	# 	"description":description.text,
-	# 	"color": couleur.color
+	var m ={
+		"depense":depense_b,
+		"recurent":recurent_b,
+		"salarial":salarial_b,
+		"montant": montant,
+		"heure": heure,
+		"date_recurente":date_b,
+		"jour_recurente":jour_recurent, 
+		"jour_recurente_actuel":jour_recurent, 
+		"date":date_clicked,
+		"jour":jour_clicked,
+		"description":description.text,
+		"color": couleur.color
 		
-	# }
-	# print(calendar)
-	# calendar.Regle(m)
+	}
+	# print(jourEnRow)
+	jourEnRow.Regle(m)
 
 
 

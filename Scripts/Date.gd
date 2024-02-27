@@ -1,6 +1,6 @@
 extends Control
 
-
+@export var couleur_select : Color
 @onready var date = get_node("Fond/Date")
 @onready var fond = get_node("Fond")
 @onready var calendar = get_node("../../../../../../../Calendar")
@@ -55,4 +55,5 @@ func _on_fond_gui_input(_event):
 	# 	calendar.ShiftedClicked(self)
 	# 	return
 	if Input.is_action_pressed("Left_Mouse_Click")&& self.is_in_group("info_date"):
+		fond.color = couleur_select
 		calendar.Clicked(self)

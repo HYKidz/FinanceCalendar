@@ -15,6 +15,7 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_em1er")
+couleur_select = Color(0.380392, 0.380392, 0.380392, 1)
 
 [node name="Contour" type="ColorRect" parent="."]
 layout_mode = 1
@@ -53,3 +54,5 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="gui_input" from="Fond" to="." method="_on_fond_gui_input"]

@@ -108,12 +108,11 @@ alignment = 1
 icon_alignment = 1
 
 [node name="Recurent" type="CheckButton" parent="Contour/Fond/Option"]
-visible = false
 layout_mode = 0
-offset_left = 58.5
-offset_top = 85.0
-offset_right = 159.5
-offset_bottom = 109.0
+offset_left = 130.0
+offset_top = 33.0
+offset_right = 231.0
+offset_bottom = 57.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
@@ -123,6 +122,7 @@ theme_override_font_sizes/font_size = 11
 text = "Recurrent"
 
 [node name="Jour" type="CheckButton" parent="Contour/Fond/Option"]
+visible = false
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -178,10 +178,10 @@ offset_bottom = 40.0
 
 [node name="Jour" type="SpinBox" parent="Contour/Fond/Option/Recuring/NbJour"]
 layout_mode = 0
-offset_left = 129.0
-offset_top = 151.0
-offset_right = 232.0
-offset_bottom = 191.0
+offset_left = 12.0
+offset_top = 261.0
+offset_right = 115.0
+offset_bottom = 301.0
 theme = ExtResource("4_0tjk7")
 prefix = "0"
 suffix = "Jour"
@@ -236,6 +236,13 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="6" parent="Contour/Fond/Selection/Jour" instance=ExtResource("5_6inrj")]
+layout_mode = 2
+
+[node name="StartingJour" type="Label" parent="Contour/Fond/Selection/Jour"]
+layout_mode = 2
+text = "Starting Jour"
+
+[node name="JourDebut" type="OptionButton" parent="Contour/Fond/Selection/Jour"]
 layout_mode = 2
 
 [node name="Date" type="GridContainer" parent="Contour/Fond/Selection"]
@@ -410,19 +417,11 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="ZoneMontant" type="ColorRect" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -92.0
-offset_top = -22.5
-offset_right = -27.0
-offset_bottom = 15.5
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 0
+offset_left = 135.0
+offset_top = 289.0
+offset_right = 200.0
+offset_bottom = 327.0
 color = Color(0.560784, 0.560784, 0.560784, 1)
 
 [node name="Montant" type="SpinBox" parent="ZoneMontant"]
@@ -436,21 +435,14 @@ suffix = "$"
 [node name="RevenuOption" type="Control" parent="."]
 visible = false
 layout_direction = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
 
 [node name="Fixe" type="CheckButton" parent="RevenuOption"]
 layout_mode = 0
-offset_left = -90.0
-offset_top = 29.0
-offset_right = -20.0
-offset_bottom = 54.0
+offset_left = 11.0
+offset_top = 269.0
+offset_right = 81.0
+offset_bottom = 294.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
@@ -463,10 +455,10 @@ text = "fixe"
 
 [node name="Salarial" type="CheckButton" parent="RevenuOption"]
 layout_mode = 0
-offset_left = -15.0
-offset_top = 30.0
-offset_right = 76.0
-offset_bottom = 55.0
+offset_left = 268.0
+offset_top = 266.0
+offset_right = 359.0
+offset_bottom = 291.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
@@ -479,10 +471,10 @@ text = "Salarial"
 [node name="SalarialOption" type="Control" parent="RevenuOption"]
 visible = false
 anchors_preset = 0
-offset_left = -17.0
-offset_top = -22.0
-offset_right = 89.0
-offset_bottom = 18.0
+offset_left = 220.0
+offset_top = 289.0
+offset_right = 326.0
+offset_bottom = 329.0
 
 [node name="Fond" type="ColorRect" parent="RevenuOption/SalarialOption"]
 layout_mode = 0
@@ -509,12 +501,11 @@ offset_bottom = 175.0
 mouse_filter = 2
 
 [node name="Description" type="ColorRect" parent="."]
-visible = false
 layout_mode = 0
-offset_left = -87.0
-offset_top = 56.0
-offset_right = 89.0
-offset_bottom = 139.0
+offset_left = 365.0
+offset_top = 126.0
+offset_right = 541.0
+offset_bottom = 209.0
 color = Color(0.560955, 0.560955, 0.560955, 1)
 
 [node name="Description" type="TextEdit" parent="Description"]
@@ -527,20 +518,19 @@ placeholder_text = "Description"
 [node name="Send" type="Button" parent="."]
 visible = false
 layout_mode = 0
-offset_left = -72.0
-offset_top = 146.0
-offset_right = 72.0
-offset_bottom = 170.0
+offset_left = 97.0
+offset_top = 332.0
+offset_right = 241.0
+offset_bottom = 356.0
 theme_override_font_sizes/font_size = 11
 text = "Aplliquer"
 
 [node name="Color" type="ColorPicker" parent="."]
-visible = false
 layout_mode = 0
-offset_left = 193.0
-offset_top = 349.0
-offset_right = 319.0
-offset_bottom = 613.0
+offset_left = 397.0
+offset_top = 230.0
+offset_right = 671.0
+offset_bottom = 494.0
 edit_alpha = false
 sampler_visible = false
 color_modes_visible = false

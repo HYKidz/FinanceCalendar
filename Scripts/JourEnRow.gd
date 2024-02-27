@@ -75,6 +75,7 @@ func InstanceDate(m,y):
 	Apply_Regle(nextmonth)
 
 func Regle(m:Dictionary):
+	print(m["color"])
 	dict_regle.push_back(m)
 	Apply_Regle(true)
 
@@ -104,13 +105,17 @@ func Apply_Regle(_nm):
 							print(tempdif%r["jour_recurente"])
 							node.Couleur = r["color"]
 			else:
-				date_node_array[r["date"]+currentday-1].Couleur = r["color"]
+				for d in r["date"]:
+					date_node_array[d["Date"]+currentday-1].Couleur = r["color"]
 		else:
-			var bonmoment = current_month==r["mois"]&&current_year==r["anne"]
+			for d in r["date"]:
+				var bonmoment = current_month==d["Mois"]&&current_year==d["Anne"]
 			# print(bonmoment)
 			# print(str(current_month)+"  "+str(r["mois"])+"  "+str(current_year)+"   "+str(r["anne"]))
-			if bonmoment:
-				date_node_array[r["date"]+currentday-1].Couleur = r["color"]
+				if bonmoment:
+					# print(d["Date"])
+					date_node_array[d["Date"]+currentday-1].Couleur = r["color"]
+					# print(date_node_array[d["Date"]+currentday-1])
 
 		# 	dict_regle.erase(r)
 

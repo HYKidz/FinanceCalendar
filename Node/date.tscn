@@ -13,6 +13,7 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_muqs4")
+couleur_select = Color(0.435294, 0.435294, 0.435294, 1)
 
 [node name="Contour" type="ColorRect" parent="."]
 layout_mode = 1
