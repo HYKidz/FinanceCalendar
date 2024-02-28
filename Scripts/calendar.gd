@@ -51,16 +51,5 @@ func ShiftedClicked(date):
 	
 func calculate_cash(m):
 	print(m)
-# func SetInfoDate(m:Dictionary):
-# 	info_panel.visible = false
-# 	dict_regle.push_back(m)
-# 	Verifier_Regle()
-
-# func Verifier_Regle():
-# 	var montant_finale
-# 	for r in dict_regle :
-# 		le_calendrier.Regle(r["date_transaction"],r["couleur"],r["recurent"],r["date_recurente"],r["jour"])
-# 		# if r["depense"]:
-
-
+	
 
