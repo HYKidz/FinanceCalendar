@@ -3,6 +3,9 @@ extends Node2D
 var dict_regle = []
 var jour_node_array =[]
 var date_node_array =[]
+var list_de_node: Array:
+	get:
+		return date_node_array
 
 
 var currentday 
@@ -75,7 +78,6 @@ func InstanceDate(m,y):
 	Apply_Regle(nextmonth)
 
 func Regle(m:Dictionary):
-	print(m["color"])
 	dict_regle.push_back(m)
 	Apply_Regle(true)
 

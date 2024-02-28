@@ -2,7 +2,7 @@ extends Control
 
 var calendrier_class = load("res://Class/Calendrier.gd").new()
 
-var depense_b : bool
+var depense_b : bool = true
 var revenue_b : bool
 var fix_b : bool
 var salarial_b : bool
@@ -174,7 +174,7 @@ func on_clicked_jour(jour):
 		return
 	jour_clicked.push_back(jour)
 	# starting_jour.visible = true
-	print(jour)
+	# print(jour)
 	if jour_clicked.size()>0:
 		send_button.visible = true
 		starting_jour_button.visible = true
@@ -187,7 +187,7 @@ func on_clicked_date(date):
 		date_clicked.erase(date)
 		return
 	date_clicked.push_back(date)
-	print(date)
+	# print(date)
 	if date_clicked.size()>0:
 		send_button.visible = true
 
@@ -234,9 +234,9 @@ func _on_button_pressed():
 		"color": couleur.color
 		
 	}
-	calendar.calculate_cash(m)
-	print(date_b)
 	jourEnRow.Regle(m)
+	calendar.calculate_cash(m)
+	# print(date_b)
 	# killAndClear()
 
 func killAndClear():
