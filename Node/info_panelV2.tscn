@@ -528,10 +528,10 @@ text = "Aplliquer"
 
 [node name="Color" type="ColorPicker" parent="."]
 layout_mode = 0
-offset_left = 461.0
-offset_top = 262.0
-offset_right = 703.0
-offset_bottom = 526.0
+offset_left = 469.0
+offset_top = 266.0
+offset_right = 707.0
+offset_bottom = 530.0
 edit_alpha = false
 sampler_visible = false
 color_modes_visible = false

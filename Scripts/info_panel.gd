@@ -168,11 +168,11 @@ func _on_depense_toggled(button_pressed):
 	depense_b = button_pressed
 
 func on_clicked_jour(jour):
-	if jour_clicked.has(jour):
+	if jour_clicked.has(jour.set_Jour):
 		jour.Couleur = Color(1,1,1)
-		jour_clicked.erase(jour)
+		jour_clicked.erase(jour.set_Jour)
 		return
-	jour_clicked.push_back(jour)
+	jour_clicked.push_back(jour.set_Jour)
 	# starting_jour.visible = true
 	# print(jour)
 	if jour_clicked.size()>0:
@@ -182,11 +182,16 @@ func on_clicked_jour(jour):
 
 
 func on_clicked_date(date):
-	if date_clicked.has(date):
+	if date_clicked.has(date.Date):
 		date.Couleur = Color(1,1,1)
-		date_clicked.erase(date)
+		date_clicked.erase(date.Date)
 		return
-	date_clicked.push_back(date)
+	var m = {
+		"date" :date.Date,
+		"mois" : date.Mois,
+		"anne": date.Anne
+	}
+	date_clicked.push_back(m)
 	# print(date)
 	if date_clicked.size()>0:
 		send_button.visible = true
@@ -201,7 +206,7 @@ func ajout_option():
 		# print(calendrier_class.jour[e])
 		# print(i+begining%7)
 		# print(i+begining-1%7)
-		if e%7==jour_clicked[0].set_Jour:
+		if e%7==jour_clicked[0]:
 			print(e-begining+1)
 			starting_jour_button.add_item(str(e-begining+1))
 		# 	print("hello")
@@ -237,18 +242,19 @@ func _on_button_pressed():
 	jourEnRow.Regle(m)
 	calendar.calculate_cash(m)
 	# print(date_b)
-	# killAndClear()
+	killAndClear()
+	# print(depense_b)
 
 func killAndClear():
 	# depense_b = false
 	# recurent_b = false
 	# salarial_b = false
-	# date_b = false
+	date_b = false
 	for date in date_clicked:
-		date.Couleur = Color(1,1,1,1)
+		date_node_array[date["date"]-1].Couleur = Color(1,1,1,1)
 	date_clicked.clear()
 	for jour in jour_clicked:
-		jour.Couleur = Color(1,1,1,1)
+		jour_node_array[jour-1].Couleur = Color(1,1,1,1)
 	jour_clicked.clear()
 
 

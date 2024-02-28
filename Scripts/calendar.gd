@@ -56,13 +56,14 @@ func calculate_cash(m):
 	var node_array = le_calendrier.list_de_node
 	var prix =0
 	if m["recurent"]:
+		# print("oke")
 		if m["date_recurente"]:
 			if m["salarial"]:
 				prix = m["montant"]*m["heure"]
 			else:
 				prix = m["montant"]
 		else:
-			var array = le_calendrier.list_de_node
+			var array = node_array
 			for d in array.size():
 				var node = array[d]
 				if node.is_in_group("date"):
@@ -79,8 +80,8 @@ func calculate_cash(m):
 					var tempinit = Time.get_unix_time_from_datetime_dict(dictinit)
 					var tempactu = Time.get_unix_time_from_datetime_dict(dictactu)
 					var tempdif = (tempactu-tempinit)/86400
-					# print(r["jour"][0])
-					if d%7 == m["jour"][0].set_Jour&&tempdif%m["jour_recurente"]==0&&tempdif>=0:
+					#ne regle pas le probleme mais l'empeiche, pas suposse de se rendre ici si on met une date recurente
+					if m["jour"].size()>0&&d%7 == m["jour"][0]&&tempdif%m["jour_recurente"]==0&&tempdif>=0:
 						
 						if m["salarial"]:
 							prix = m["montant"]*m["heure"]
@@ -94,7 +95,8 @@ func calculate_cash(m):
 		else:
 			prix = m["montant"]
 	if !current_rule.has(m):
-		current_rule.push_back(m)
+		var dict = m.duplicate(true)
+		current_rule.push_back(dict)
 	if m["depense"] :
 		prix *= -1
 

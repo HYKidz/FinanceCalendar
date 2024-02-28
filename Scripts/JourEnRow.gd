@@ -76,15 +76,20 @@ func InstanceDate(m,y):
 	for i in calendrier_class.get_days_in_month(m,y) :
 		date_node_array[i+currentday].Date = i+1
 	Apply_Regle(nextmonth)
+	if dict_regle.size() >0 :
+		print(dict_regle[0]["date"].size())
 
 func Regle(m:Dictionary):
-	dict_regle.push_back(m)
+	var dict = m.duplicate(true)
+	dict_regle.push_back(dict)
 	Apply_Regle(true)
 
-func Apply_Regle(_nm):
+func Apply_Regle(_r):
 	# var recuringWeekDay 
 	for r in dict_regle: 
+		print(r["date"])
 		if r["recurent"]:
+			# print("okebi")
 			if !r["date_recurente"]:
 				#Refactor, cause cant make work of two jour
 				for d in date_node_array.size():
@@ -103,25 +108,24 @@ func Apply_Regle(_nm):
 						var tempinit = Time.get_unix_time_from_datetime_dict(dictinit)
 						var tempactu = Time.get_unix_time_from_datetime_dict(dictactu)
 						var tempdif = (tempactu-tempinit)/86400
-						# print(r["jour"][0])
-						if d%7 == r["jour"][0].set_Jour&&tempdif%r["jour_recurente"]==0&&tempdif>=0:
+						#ne regle pas le probleme mais l'empeiche, pas suposse de se rendre ici si on met une date recurente
+						if r["jour"].size()>0&&d%7 ==r["jour"][0]&&tempdif%r["jour_recurente"]==0&&tempdif>=0:
 							print(tempdif%r["jour_recurente"])
 							node.Couleur = r["color"]
 					#***
 			else:
 				for d in r["date"]:
-					date_node_array[d["Date"]+currentday-1].Couleur = r["color"]
+					# print(d)
+					date_node_array[d["date"]+currentday-1].Couleur = r["color"]
 		else:
 			for d in r["date"]:
-				var bonmoment = current_month==d["Mois"]&&current_year==d["Anne"]
+				var bonmoment = current_month==d["mois"]&&current_year==d["anne"]
 			# print(bonmoment)
 			# print(str(current_month)+"  "+str(r["mois"])+"  "+str(current_year)+"   "+str(r["anne"]))
 				if bonmoment:
 					# print(d["Date"])
-					date_node_array[d["Date"]+currentday-1].Couleur = r["color"]
+					date_node_array[d["date"]+currentday-1].Couleur = r["color"]
 					# print(date_node_array[d["Date"]+currentday-1])
-
-		# 	dict_regle.erase(r)
 
 
 
