@@ -2,6 +2,10 @@ extends Control
 
 var calendrier_class = load("res://Class/Calendrier.gd").new()
 # var jour 
+var Couleur : Color:
+	set(value):
+		fond.color = value
+		
 @export var couleur_select : Color
 @onready var jour = get_node("Fond/Jour")
 @onready var fond = get_node("Fond")

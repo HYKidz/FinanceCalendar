@@ -38,6 +38,7 @@ var anne:int
 # @onready var recurent_option = get_node("Contour/Fond/Option/Recuring") 
 @onready var couleur = get_node("Color")
 @onready var jourEnRow = get_node("../JourEnRow")
+@onready var calendar = get_node("../../Calendar")
 @onready var description = get_node("Description/Description")
 @onready var date_node = preload("res://Node/date.tscn")
 @onready var date_vide_node = preload("res://Node/dateVide.tscn")
@@ -78,6 +79,7 @@ func Init(m,y):
 # 	print(group.get_pressed_button())
 	
 func Current_Month(m,y):
+	killAndClear()
 	mois =m
 	anne =y
 	var totalday = calendrier_class.get_days_in_month(m,y)
@@ -127,25 +129,15 @@ func _on_heure_value_changed(value):
 	heure = value
 
 func _on_date_toggled(button_pressed:bool):
+	killAndClear()
 	date_b = button_pressed
 	date_option.visible = button_pressed
-	for date in date_clicked:
-		date.Couleur = Color(1,1,1,1)
-	date_clicked.clear()
-	for jour in jour_clicked:
-		jour.Couleur = Color(1,1,1,1)
-	jour_clicked.clear()
 
 func _on_jour_toggled(button_pressed):
+	killAndClear()
 	# recuring_jour = button_pressed
 	jour_option.visible = button_pressed
 	jour_label.visible = button_pressed
-	for date in date_clicked:
-		date.Couleur = Color(1,1,1,1)
-	date_clicked.clear()
-	for jour in jour_clicked:
-		jour.Couleur = Color(1,1,1,1)
-	jour_clicked.clear()
 
 func _on_jour_value_changed(value):
 	jour_recurent = value
@@ -177,6 +169,8 @@ func _on_depense_toggled(button_pressed):
 
 func on_clicked_jour(jour):
 	if jour_clicked.has(jour):
+		jour.Couleur = Color(1,1,1)
+		jour_clicked.erase(jour)
 		return
 	jour_clicked.push_back(jour)
 	# starting_jour.visible = true
@@ -189,6 +183,8 @@ func on_clicked_jour(jour):
 
 func on_clicked_date(date):
 	if date_clicked.has(date):
+		date.Couleur = Color(1,1,1)
+		date_clicked.erase(date)
 		return
 	date_clicked.push_back(date)
 	print(date)
@@ -214,7 +210,6 @@ func _on_jour_debut_item_selected(index):
 	# starting_jour_button.label[index]
 	print(starting_jour_button.get_item_text(index))
 	# var current_selected = index
-	pass # Replace with function body.
 
 
 func _on_button_pressed():
@@ -239,8 +234,23 @@ func _on_button_pressed():
 		"color": couleur.color
 		
 	}
-	# print(jourEnRow)
+	calendar.calculate_cash(m)
+	print(date_b)
 	jourEnRow.Regle(m)
+	# killAndClear()
+
+func killAndClear():
+	# depense_b = false
+	# recurent_b = false
+	# salarial_b = false
+	# date_b = false
+	for date in date_clicked:
+		date.Couleur = Color(1,1,1,1)
+	date_clicked.clear()
+	for jour in jour_clicked:
+		jour.Couleur = Color(1,1,1,1)
+	jour_clicked.clear()
+
 
 
 

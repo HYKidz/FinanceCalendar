@@ -49,11 +49,8 @@ func _on_previous_pressed():
 func ShiftedClicked(date):
 	print(date)
 	
-func Clicked(date):
-	info_panel.on_clicked_date(date)
-	# var temp = Time.get_datetime_string_from_unix_time(date.Anne-date.Mois-date.Date)
-	# print(temp)
-	
+func calculate_cash(m):
+	print(m)
 # func SetInfoDate(m:Dictionary):
 # 	info_panel.visible = false
 # 	dict_regle.push_back(m)
