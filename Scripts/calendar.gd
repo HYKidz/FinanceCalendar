@@ -34,7 +34,9 @@ func _on_next_pressed():
 	info_panel.Current_Month(current_month,current_year)
 	le_titre_mois.text = calendrier_class.mois[current_month-1]+"   "+str(current_year)
 	for rule in current_rule :
-		calculate_cash(rule)
+		if current_month>=rule["starting_mois"]&&current_year>=rule["starting_anne"]:
+			total +=calculate_cash(rule)
+			cash_label.text = str(total)
 
 
 func _on_previous_pressed():
@@ -47,7 +49,14 @@ func _on_previous_pressed():
 	info_panel.Current_Month(current_month,current_year)
 	le_titre_mois.text = calendrier_class.mois[current_month-1]+"   "+str(current_year)
 	for rule in current_rule :
-		calculate_cash(rule)
+		if current_month>=rule["starting_mois"]&&current_year>=rule["starting_anne"]:
+			print(calculate_cash(rule))
+			total-=calculate_cash(rule)
+			cash_label.text = str(total)
+
+func new_regle(m):
+	total +=calculate_cash(m)
+	cash_label.text = str(total)
 
 	
 func calculate_cash(m):
@@ -99,9 +108,8 @@ func calculate_cash(m):
 		current_rule.push_back(dict)
 	if m["depense"] :
 		prix *= -1
-
-	total += prix
-	cash_label.text = str(total) 
+	return prix
+ 
 
 	
 

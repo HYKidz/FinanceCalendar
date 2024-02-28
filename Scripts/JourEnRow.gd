@@ -76,8 +76,6 @@ func InstanceDate(m,y):
 	for i in calendrier_class.get_days_in_month(m,y) :
 		date_node_array[i+currentday].Date = i+1
 	Apply_Regle(nextmonth)
-	if dict_regle.size() >0 :
-		print(dict_regle[0]["date"].size())
 
 func Regle(m:Dictionary):
 	var dict = m.duplicate(true)
@@ -87,45 +85,46 @@ func Regle(m:Dictionary):
 func Apply_Regle(_r):
 	# var recuringWeekDay 
 	for r in dict_regle: 
-		print(r["date"])
-		if r["recurent"]:
-			# print("okebi")
-			if !r["date_recurente"]:
-				#Refactor, cause cant make work of two jour
-				for d in date_node_array.size():
-					var node = date_node_array[d]
-					if node.is_in_group("date"):
-						var dictinit ={
-							"year":r["starting_anne"],
-							"month":r["starting_mois"],
-							"day":r["starting_jour"]
-						}
-						var dictactu ={
-							"year":node.Anne,
-							"month":node.Mois,
-							"day":node.Date
-						}
-						var tempinit = Time.get_unix_time_from_datetime_dict(dictinit)
-						var tempactu = Time.get_unix_time_from_datetime_dict(dictactu)
-						var tempdif = (tempactu-tempinit)/86400
-						#ne regle pas le probleme mais l'empeiche, pas suposse de se rendre ici si on met une date recurente
-						if r["jour"].size()>0&&d%7 ==r["jour"][0]&&tempdif%r["jour_recurente"]==0&&tempdif>=0:
-							print(tempdif%r["jour_recurente"])
-							node.Couleur = r["color"]
-					#***
+		if current_month>=r["starting_mois"]&&current_year>=r["starting_anne"]:
+			print(r["date"])
+			if r["recurent"]:
+				# print("okebi")
+				if !r["date_recurente"]:
+					#Refactor, cause cant make work of two jour
+					for d in date_node_array.size():
+						var node = date_node_array[d]
+						if node.is_in_group("date"):
+							var dictinit ={
+								"year":r["starting_anne"],
+								"month":r["starting_mois"],
+								"day":r["starting_jour"]
+							}
+							var dictactu ={
+								"year":node.Anne,
+								"month":node.Mois,
+								"day":node.Date
+							}
+							var tempinit = Time.get_unix_time_from_datetime_dict(dictinit)
+							var tempactu = Time.get_unix_time_from_datetime_dict(dictactu)
+							var tempdif = (tempactu-tempinit)/86400
+							#ne regle pas le probleme mais l'empeiche, pas suposse de se rendre ici si on met une date recurente
+							if r["jour"].size()>0&&d%7 ==r["jour"][0]&&tempdif%r["jour_recurente"]==0&&tempdif>=0:
+								print(tempdif%r["jour_recurente"])
+								node.Couleur = r["color"]
+						#***
+				else:
+					for d in r["date"]:
+						# print(d)
+						date_node_array[d["date"]+currentday-1].Couleur = r["color"]
 			else:
 				for d in r["date"]:
-					# print(d)
-					date_node_array[d["date"]+currentday-1].Couleur = r["color"]
-		else:
-			for d in r["date"]:
-				var bonmoment = current_month==d["mois"]&&current_year==d["anne"]
-			# print(bonmoment)
-			# print(str(current_month)+"  "+str(r["mois"])+"  "+str(current_year)+"   "+str(r["anne"]))
-				if bonmoment:
-					# print(d["Date"])
-					date_node_array[d["date"]+currentday-1].Couleur = r["color"]
-					# print(date_node_array[d["Date"]+currentday-1])
+					var bonmoment = current_month==d["mois"]&&current_year==d["anne"]
+				# print(bonmoment)
+				# print(str(current_month)+"  "+str(r["mois"])+"  "+str(current_year)+"   "+str(r["anne"]))
+					if bonmoment:
+						# print(d["Date"])
+						date_node_array[d["date"]+currentday-1].Couleur = r["color"]
+						# print(date_node_array[d["Date"]+currentday-1])
 
 
 

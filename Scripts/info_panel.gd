@@ -240,7 +240,7 @@ func _on_button_pressed():
 		
 	}
 	jourEnRow.Regle(m)
-	calendar.calculate_cash(m)
+	calendar.new_regle(m)
 	# print(date_b)
 	killAndClear()
 	# print(depense_b)
