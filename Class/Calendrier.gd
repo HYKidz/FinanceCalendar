@@ -30,19 +30,3 @@ func get_beginning_weekday(m:int, y, d=1):
 	var t = [0,3,2,5,0,3,5,1,4,6,2,4]
 	if m <3 : y-= 1
 	return(y + y/4 - y/100 + y/400 + t[m-1] + d) % 7
-
-#calcule servant a etre uti;iser pour potentiellement fair la prog du vendredi sur deux
-# func get_time_between_two_date(d,m,y, d2,m2,y2):
-# 	var annedif = y2-y
-# 	var _jourpasser =0
-# 	for i in annedif:
-# 		var is_leap_year = (y+i % 4 == 0 &&y+i% 100 !=0) || (y+i%400 ==0)
-# 		if i!=0:
-# 			if is_leap_year:
-# 				_jourpasser+= 366
-# 			else: _jourpasser+=365
-# 	var moisdif = m2 -m
-	
-		
-	
-	pass

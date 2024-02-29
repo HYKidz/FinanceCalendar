@@ -1,8 +1,11 @@
 extends Node2D
 
+var calendrier_class = load("res://Class/Calendrier.gd").new()
+
 var dict_regle = []
 var jour_node_array =[]
 var date_node_array =[]
+
 var list_de_node: Array:
 	get:
 		return date_node_array
@@ -11,22 +14,15 @@ var list_de_node: Array:
 var currentday 
 var current_month:int
 var current_year:int
-# @onready var container = get_node("Box/Grid")
 
-
-# @onready var container = get_node("Box/Container/Grid")
-# @onready var container = get_node("Box/Grid/Container")
 @onready var container = get_node("Box/Grid")
 @onready var date_node = preload("res://Node/date.tscn")
 @onready var date_vide_node = preload("res://Node/dateVide.tscn")
 @onready var jour_node = preload("res://Node/Jour.tscn")
-var calendrier_class = load("res://Class/Calendrier.gd").new()
 
 # Called when the node enters the scene tree for the first time.
 
 func _ready():
-	# jour_node_array.resize(7)
-	# print(calendrier_class.jour.size())
 	for d in calendrier_class.jour.size():
 		var new_jour = jour_node.instantiate()
 		new_jour.init()
@@ -34,14 +30,6 @@ func _ready():
 		new_jour.set_Jour = d
 		jour_node_array.push_back(new_jour)
 		container.add_child(new_jour)
-	
-	# for i in 7:
-	# 	var jour_en_cour = jour_node_array[i]
-	# 	jour_en_cour.set_Jour = calendrier_class.jour[i]
-	
-	# InstanceDate()
-		
-
 
 func InstanceDate(m,y):
 	var nextmonth = current_month<m
@@ -55,7 +43,6 @@ func InstanceDate(m,y):
 	for n in date_node_array:
 		n.queue_free()
 	date_node_array.clear()
-	#change for current month
 	currentday = calendrier_class.get_beginning_weekday(m,y)
 	var totalday = calendrier_class.get_days_in_month(m,y)+currentday
 	for i in totalday:
@@ -83,12 +70,10 @@ func Regle(m:Dictionary):
 	Apply_Regle(true)
 
 func Apply_Regle(_r):
-	# var recuringWeekDay 
 	for r in dict_regle: 
 		if current_month>=r["starting_mois"]&&current_year>=r["starting_anne"]:
 			print(r["date"])
 			if r["recurent"]:
-				# print("okebi")
 				if !r["date_recurente"]:
 					#Refactor, cause cant make work of two jour
 					for d in date_node_array.size():
@@ -114,17 +99,12 @@ func Apply_Regle(_r):
 						#***
 				else:
 					for d in r["date"]:
-						# print(d)
 						date_node_array[d["date"]+currentday-1].Couleur = r["color"]
 			else:
 				for d in r["date"]:
 					var bonmoment = current_month==d["mois"]&&current_year==d["anne"]
-				# print(bonmoment)
-				# print(str(current_month)+"  "+str(r["mois"])+"  "+str(current_year)+"   "+str(r["anne"]))
 					if bonmoment:
-						# print(d["Date"])
 						date_node_array[d["date"]+currentday-1].Couleur = r["color"]
-						# print(date_node_array[d["Date"]+currentday-1])
 
 
 
