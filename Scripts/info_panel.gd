@@ -192,8 +192,10 @@ func _on_button_pressed():
 func killAndClear():
 	# depense_b = false
 	# recurent_b = false
-	# salarial_b = false
+	salarial_b = false
 	date_b = false
+	# heure =1
+	# montant=0
 	for date in date_clicked:
 		date_node_array[date["date"]-1].Couleur = Color(1,1,1,1)
 	date_clicked.clear()
